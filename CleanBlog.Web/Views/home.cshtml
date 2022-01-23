@@ -1,0 +1,18 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<Umbraco.Web.PublishedModels.Home>
+
+@{
+    Layout = "master.cshtml";
+    var leaveMessage = Model.LeaveMessage;
+}
+
+@Html.Partial("~/Views/Partials/pageHeader.cshtml")
+
+@Html.CachedPartial("~/Views/Partials/latestArticles.cshtml", Model, 3600)
+
+@section ScriptsBottom
+{
+    <script type="text/javascript">
+        PDG.leaveMessage = '@leaveMessage';
+        PDG.init();
+    </script>    
+}
